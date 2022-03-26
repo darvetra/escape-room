@@ -18,7 +18,7 @@ export const questsList : QuestsType = [
     description: 'В комнате с приглушённым светом несколько человек, незнакомых друг с другом, приходят в себя. Никто не помнит, что произошло прошлым вечером. Руки и ноги связаным, но одному из вас получилось освободиться. На стене висит пугающий таймер и запущен отсчет 60 минут. Сможете ли вы разобраться в стрессовой ситуации, помочь другим, разобраться что произошло и выбраться из комнаты?',
     previewImg: 'img/preview-maniac.jpg',
     coverImg: 'img/cover-maniac.jpg',
-    type: 'horror',
+    type: 'adventure',
     level: 'medium',
     peopleCount: [3, 4],
     duration: 90,
@@ -54,7 +54,7 @@ export const questsList : QuestsType = [
     type: 'sci-fi',
     level: 'easy',
     peopleCount: [5, 6],
-    duration: 20,
+    duration: 60,
   },
   {
     id: 6,
@@ -65,6 +65,6 @@ export const questsList : QuestsType = [
     type: 'adventure',
     level: 'medium',
     peopleCount: [4, 7],
-    duration: 180,
+    duration: 90,
   },
 ]
