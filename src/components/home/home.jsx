@@ -7,6 +7,8 @@ import {
 import { QuestsCatalog } from './components/components';
 import * as S from './home.styled';
 
+import { questsList } from '../../mocks/quets';
+
 const HomePage = () => (
   <MainLayout>
     <S.Main forwardedAs="main">
@@ -14,7 +16,7 @@ const HomePage = () => (
         <PageTitle>Выберите тематику</PageTitle>
         <PageSubtext>квесты в Санкт-Петербурге</PageSubtext>
       </PageHeading>
-      <QuestsCatalog />
+      <QuestsCatalog quests={questsList} />
     </S.Main>
   </MainLayout>
 );
