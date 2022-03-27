@@ -12,20 +12,26 @@ import { appTheme } from './common';
 import * as S from './app.styled';
 
 import { AppRoute } from '../../const';
+import type { QuestType, QuestsType } from '../../types/quest';
 
-const App = () => (
+type AppProps = {
+  quest: QuestType,
+  quests: QuestsType,
+}
+
+const App = ({quests, quest}: AppProps) => (
   <ThemeProvider theme={appTheme}>
     <S.GlobalStyle />
     <Router>
       <Switch>
         <Route exact path={AppRoute.Quest}>
-          <DetailedQuest />
+          <DetailedQuest quest={quest}/>
         </Route>
         <Route exact path={AppRoute.Contacts}>
           <Contacts />
         </Route>
         <Route exact path={AppRoute.Home}>
-          <Home />
+          <Home quests={quests} />
         </Route>
         <Route>
           <NotFound />

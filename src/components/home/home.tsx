@@ -7,16 +7,20 @@ import {
 import { QuestsCatalog } from './components/components';
 import * as S from './home.styled';
 
-import { questsList } from '../../mocks/quets';
+import { QuestsType } from '../../types/quest';
 
-const HomePage = () => (
+type HomePageProps = {
+  quests: QuestsType;
+}
+
+const HomePage = ({quests}: HomePageProps) => (
   <MainLayout>
     <S.Main forwardedAs="main">
       <PageHeading>
         <PageTitle>Выберите тематику</PageTitle>
         <PageSubtext>квесты в Санкт-Петербурге</PageSubtext>
       </PageHeading>
-      <QuestsCatalog quests={questsList} />
+      <QuestsCatalog quests={quests} />
     </S.Main>
   </MainLayout>
 );

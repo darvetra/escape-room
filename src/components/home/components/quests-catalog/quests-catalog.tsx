@@ -14,11 +14,14 @@ type QuestCatalogProps = {
   quests: QuestsType;
 }
 
+// Сделать вкладку активной ! вылетает ошибка
+
 const QuestsCatalog = ({quests}: QuestCatalogProps) => (
   <>
     <S.Tabs>
       <S.TabItem>
-        <S.TabBtn isActive>
+        {/*<S.TabBtn isActive>*/}
+        <S.TabBtn>
           <IconAllQuests />
           <S.TabTitle>Все квесты</S.TabTitle>
         </S.TabBtn>
