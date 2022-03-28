@@ -22,5 +22,14 @@ export enum Genre {
   'sci-fi' = 'Sci-fi',
 }
 
+export enum Genres {
+  All = 'All quests',
+  Adventure = 'Adventure',
+  Horror = 'Horror',
+  Mystic = 'Mystic',
+  Detective = 'Detective',
+  SciFi = 'Sci-Fi',
+}
+
 // - на странице src/components/home/components/quests-catalog/quests-catalog.tsx починить вкладки
 // - на странице src/components/detailed-quest/detailed-quest.tsx не грузится фон
