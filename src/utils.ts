@@ -1,4 +1,4 @@
-import { DifficultLevel, Genre } from './const';
+import { DifficultLevel, GenreRus } from './const';
 
 /**
  * Возвращает уровень сложности в читаемом виде
@@ -26,23 +26,23 @@ export const getDifficultLevel = (level: string) : string => {
  */
 export const getGenre = (genre: string) : string => {
   if (genre === 'adventure') {
-    return Genre.adventure;
+    return GenreRus.adventure;
   }
 
   if (genre === 'horror') {
-    return Genre.horror;
+    return GenreRus.horror;
   }
 
   if (genre === 'mystic') {
-    return Genre.mystic;
+    return GenreRus.mystic;
   }
 
   if (genre === 'detective') {
-    return Genre.detective;
+    return GenreRus.detective;
   }
 
   if (genre === 'sci-fi') {
-    return Genre['sci-fi'];
+    return GenreRus['sci-fi'];
   }
 
   return 'Incorrect genre';

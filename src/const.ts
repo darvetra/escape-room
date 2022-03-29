@@ -14,7 +14,7 @@ export enum DifficultLevel {
   hard = 'сложный',
 }
 
-export enum Genre {
+export enum GenreRus {
   adventure = 'Приключения',
   horror = 'Ужасы',
   mystic = 'Мистика',

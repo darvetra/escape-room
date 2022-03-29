@@ -1,3 +1,13 @@
+import {Dispatch} from 'redux';
+import {connect, ConnectedProps} from 'react-redux';
+
+import { ChangeGenre } from '../../../../store/action';
+
+import { State } from '../../../../types/state';
+import { Actions } from '../../../../types/action';
+
+import { Genres } from '../../../../const';
+
 import { ReactComponent as IconAllQuests } from 'assets/img/icon-all-quests.svg';
 import { ReactComponent as IconAdventures } from 'assets/img/icon-adventures.svg';
 import { ReactComponent as IconHorrors } from 'assets/img/icon-horrors.svg';
@@ -14,9 +24,30 @@ type QuestCatalogProps = {
   quests: QuestsType;
 }
 
+const mapStateToProps = ({questList, genre}: State) => ({
+  questList: questList,
+  activeGenre: genre,
+});
+
+// Без использования bindActionCreators
+const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
+  onChangeGenre(genre: Genres) {
+    dispatch(ChangeGenre(genre));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedComponentProps = PropsFromRedux & QuestCatalogProps;
+
 // Сделать вкладку активной ! вылетает ошибка
 
-const QuestsCatalog = ({quests}: QuestCatalogProps) => (
+const QuestsCatalog = (props: ConnectedComponentProps) => {
+
+  const { quests } = props;
+
+  return (
   <>
     <S.Tabs>
       <S.TabItem>
@@ -69,6 +100,7 @@ const QuestsCatalog = ({quests}: QuestCatalogProps) => (
 
     </S.QuestsList>
   </>
-);
+  )
+};
 
 export default QuestsCatalog;
