@@ -16,6 +16,7 @@
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24",
+    "redux-devtools-extension": "^2.13.9",
     "concurrently": "6.3.0",
     "joi": "17.4.2",
     "json-server": "0.17.0",
