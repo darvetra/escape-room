@@ -1,7 +1,12 @@
-import {ActionType, ChangeGenreAction} from '../types/action';
+import {ActionType, ChangeGenreActionType, GetAllGenresActionType} from '../types/action';
+import { QuestsType } from '../types/quest';
 
-export const changeGenre = (genre: string): ChangeGenreAction => ({
+export const changeGenre = (genre: string): ChangeGenreActionType => ({
   type: ActionType.ChangeGenre,
   payload: genre,
 });
 
+export const GetAllGenres = (questList: QuestsType): GetAllGenresActionType => ({
+  type: ActionType.GetAllGenres,
+  payload: questList,
+});
