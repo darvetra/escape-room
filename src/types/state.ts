@@ -1,6 +1,7 @@
 import type { QuestsType } from './quest';
+import { Genres } from '../const';
 
 export type State = {
-  genre: string,
-  questList: QuestsType,
+  genre: Genres,
+  quests: QuestsType,
 };

@@ -1,97 +1,58 @@
 import {Dispatch} from 'redux';
 import {connect, ConnectedProps} from 'react-redux';
 
-import { ChangeGenre } from '../../../../store/action';
+import { changeGenre } from '../../../../store/action';
 
 import { State } from '../../../../types/state';
 import { Actions } from '../../../../types/action';
 
 import { Genres } from '../../../../const';
+import { getFilterMoviesByGenre } from '../../../../utils';
 
-import { ReactComponent as IconAllQuests } from 'assets/img/icon-all-quests.svg';
-import { ReactComponent as IconAdventures } from 'assets/img/icon-adventures.svg';
-import { ReactComponent as IconHorrors } from 'assets/img/icon-horrors.svg';
-import { ReactComponent as IconMystic } from 'assets/img/icon-mystic.svg';
-import { ReactComponent as IconDetective } from 'assets/img/icon-detective.svg';
-import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
+import GenresList from '../genres-list/genres-list';
+
+// import { ReactComponent as IconAllQuests } from 'assets/img/icon-all-quests.svg';
+// import { ReactComponent as IconAdventures } from 'assets/img/icon-adventures.svg';
+// import { ReactComponent as IconHorrors } from 'assets/img/icon-horrors.svg';
+// import { ReactComponent as IconMystic } from 'assets/img/icon-mystic.svg';
+// import { ReactComponent as IconDetective } from 'assets/img/icon-detective.svg';
+// import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
 import * as S from './quests-catalog.styled';
 
-import { QuestsType } from '../../../../types/quest';
 import QuestItem from '../quest-item/quest-item';
 
 
-type QuestCatalogProps = {
-  quests: QuestsType;
-}
-
-const mapStateToProps = ({questList, genre}: State) => ({
-  questList: questList,
+const mapStateToProps = ({quests, genre}: State) => ({
+  quests,
   activeGenre: genre,
 });
 
 // Без использования bindActionCreators
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
   onChangeGenre(genre: Genres) {
-    dispatch(ChangeGenre(genre));
+    dispatch(changeGenre(genre));
   },
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
-type ConnectedComponentProps = PropsFromRedux & QuestCatalogProps;
+type ConnectedComponentProps = PropsFromRedux;
 
 // Сделать вкладку активной ! вылетает ошибка
 
 const QuestsCatalog = (props: ConnectedComponentProps) => {
+  const { quests, activeGenre, onChangeGenre } = props;
+  const genres = Object.values(Genres) as Genres[];
 
-  const { quests } = props;
+  // const showQuests = getFilterMoviesByGenre(quests, activeGenre);
 
   return (
   <>
     <S.Tabs>
-      <S.TabItem>
-        {/*<S.TabBtn isActive>*/}
-        <S.TabBtn>
-          <IconAllQuests />
-          <S.TabTitle>Все квесты</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
 
-      <S.TabItem>
-        <S.TabBtn>
-          <IconAdventures />
-          <S.TabTitle>Приключения</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
+      <GenresList genres={genres} activeGenre={activeGenre} onChangeGenre={onChangeGenre}/>
 
-      <S.TabItem>
-        <S.TabBtn>
-          <IconHorrors />
-          <S.TabTitle>Ужасы</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
-
-      <S.TabItem>
-        <S.TabBtn>
-          <IconMystic />
-          <S.TabTitle>Мистика</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
-
-      <S.TabItem>
-        <S.TabBtn>
-          <IconDetective />
-          <S.TabTitle>Детектив</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
-
-      <S.TabItem>
-        <S.TabBtn>
-          <IconScifi />
-          <S.TabTitle>Sci-fi</S.TabTitle>
-        </S.TabBtn>
-      </S.TabItem>
     </S.Tabs>
 
     <S.QuestsList>
@@ -103,4 +64,5 @@ const QuestsCatalog = (props: ConnectedComponentProps) => {
   )
 };
 
-export default QuestsCatalog;
+export {QuestsCatalog};
+export default connector(QuestsCatalog);

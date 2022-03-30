@@ -1,4 +1,5 @@
-import { DifficultLevel, GenreRus } from './const';
+import { ALL_GENRES, DifficultLevel, GenreRus } from './const';
+import { QuestsType } from './types/quest';
 
 /**
  * Возвращает уровень сложности в читаемом виде
@@ -46,4 +47,17 @@ export const getGenre = (genre: string) : string => {
   }
 
   return 'Incorrect genre';
+};
+
+/**
+ * Фильтрует квесты по жанру
+ * @param quests
+ * @param genre
+ */
+export const getFilterMoviesByGenre = (quests: QuestsType, genre: string) : QuestsType => {
+  if (genre === ALL_GENRES) {
+    return quests;
+  }
+
+  return quests.filter((quest) => quest.type === genre);
 };

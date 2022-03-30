@@ -19,7 +19,7 @@ type AppProps = {
   quests: QuestsType,
 }
 
-const App = ({quests, quest}: AppProps) => (
+const App = ({quest}: AppProps) => (
   <ThemeProvider theme={appTheme}>
     <S.GlobalStyle />
     <Router>
@@ -31,7 +31,7 @@ const App = ({quests, quest}: AppProps) => (
           <Contacts />
         </Route>
         <Route exact path={AppRoute.Home}>
-          <Home quests={quests} />
+          <Home />
         </Route>
         <Route>
           <NotFound />

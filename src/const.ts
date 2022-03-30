@@ -1,3 +1,5 @@
+export const ALL_GENRES = 'All genres';
+
 export enum AppRoute {
   Home = '/',
   // Quest = '/quest',

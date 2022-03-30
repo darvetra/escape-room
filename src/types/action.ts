@@ -1,18 +1,10 @@
-import { QuestsType } from './quest';
+import { changeGenre, getQuestList } from '../store/action';
 
 export enum ActionType {
   ChangeGenre = 'list/changeGenre',
-  GetAllGenres = 'list/getAllGenres',
+  GetQuestList  = 'list/getQuestList',
 }
 
-export type ChangeGenreActionType = {
-  type: ActionType.ChangeGenre;
-  payload: string;
-};
-
-export type GetAllGenresActionType = {
-  type: ActionType.GetAllGenres;
-  payload: QuestsType;
-};
-
-export type Actions = ChangeGenreActionType | GetAllGenresActionType;
+export type Actions =
+  | ReturnType<typeof changeGenre>
+  | ReturnType<typeof getQuestList>;
